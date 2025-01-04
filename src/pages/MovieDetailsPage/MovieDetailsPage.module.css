@@ -1,0 +1,76 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    justify-content: center;
+  }
+}
+
+.infoWrap {
+  padding: 20px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 40px;
+  }
+}
+
+.img {
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #f97316;
+}
+
+.score {
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.name {
+  display: grid;
+  gap: 16px;
+  font-size: 24px;
+  align-items: center;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.listGenres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.desc {
+  width: 100%;
+  font-size: 20px;
+
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+}
+
+.date {
+  margin-bottom: 12px;
+  gap: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+}
