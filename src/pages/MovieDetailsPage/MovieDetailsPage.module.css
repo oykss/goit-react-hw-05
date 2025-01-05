@@ -1,6 +1,7 @@
 .section {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 40px;
 
   @media (min-width: 768px) and (max-width: 1279px) {
     justify-content: center;
@@ -9,8 +10,9 @@
 
 .infoWrap {
   padding: 20px 0;
-
+  width: 100%;
   @media screen and (min-width: 768px) {
+    width: 500px;
     padding: 20px 40px;
   }
 }
@@ -18,6 +20,13 @@
 .img {
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 10px;
+  left: 0;
+
+  @media (min-width: 768px) {
+    width: 500px;
+  }
 }
 
 .icon {
@@ -40,10 +49,6 @@
   font-size: 24px;
   align-items: center;
   margin-bottom: 20px;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
 }
 
 .listGenres {
@@ -73,4 +78,39 @@
   font-size: 20px;
   font-weight: 500;
   display: flex;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #f97316;
+  font-size: 20px;
+  transition: all 250ms ease-in-out;
+  &:hover {
+    transform: scale(95%);
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: #171717;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    color: #f97316;
+  }
+}
+
+.active {
+  color: #f97316;
+}
+
+.navList {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }

@@ -1,7 +1,14 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { FaCalendarCheck, FaStar } from 'react-icons/fa';
-import { NavLink, useParams } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { getMovieId } from '../../lib/api_handler';
 import css from './MovieDetailsPage.module.css';
 
@@ -17,6 +24,8 @@ const links = {
 export default function MovieDetailsPage() {
   const [movie, setMovies] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLink = location.state ?? '/movies';
 
   useEffect(() => {
     async function getMovie(id) {
@@ -41,11 +50,17 @@ export default function MovieDetailsPage() {
   } = movie;
   return (
     <section className={css.section}>
-      <img
-        src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
-        alt={original_title}
-        className={css.img}
-      />
+      <div>
+        <Link to={backLink} className={css.back}>
+          <IoIosArrowBack className={css.icon} />
+          Go back
+        </Link>
+        <img
+          src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+          alt={original_title}
+          className={css.img}
+        />
+      </div>
       <ul className={css.infoWrap}>
         <li className={css.name}>
           <h2>{original_title}</h2>
@@ -80,6 +95,9 @@ export default function MovieDetailsPage() {
               </NavLink>
             ))}
           </nav>
+        </li>
+        <li>
+          <Outlet />
         </li>
       </ul>
     </section>
