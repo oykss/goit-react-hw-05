@@ -7,16 +7,23 @@ import { getMoviesQuery } from '../../lib/api_handler';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(false);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
   useEffect(() => {
     async function getMovies(query) {
+      setError(false);
       try {
         const { results } = await getMoviesQuery(query);
-        setMovies(results);
+        if (results.length === 0 && query) {
+          setError(true);
+        } else {
+          setMovies(results);
+        }
       } catch (error) {
         console.error('Failed to fetch movies:', error);
+        setError('Failed to fetch movies. Please try again later.');
       }
     }
 
@@ -26,7 +33,7 @@ export default function MoviesPage() {
   return (
     <section>
       <SearchBar />
-      {movies.length !== 0 ? <MovieList movies={movies} /> : <Error />}
+      {error ? <Error /> : <MovieList movies={movies} />}
     </section>
   );
 }
