@@ -20,8 +20,9 @@ export default function SearchBar() {
         value={inputValue}
         className={css.input}
         onChange={e => {
-          setInputValue(e.target.value);
-          handleQuery(e.target.value);
+          const query = e.target.value;
+          setInputValue(query);
+          handleQuery(query.trim());
         }}
       />
     </label>

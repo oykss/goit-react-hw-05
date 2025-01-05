@@ -7,6 +7,7 @@ import { getReviewsId } from '../../lib/api_handler';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import Error from '../Error/Error';
 import css from './MovieReviews.module.css';
 
 export default function MovieReviews() {
@@ -25,6 +26,8 @@ export default function MovieReviews() {
 
     getReviews(movieId);
   }, [movieId]);
+
+  if (reviews.length === 0) return <Error />;
 
   return (
     <Swiper slidesPerView={1} navigation modules={[Navigation]}>

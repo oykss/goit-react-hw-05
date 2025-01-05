@@ -14,6 +14,11 @@
       transform: scale(95%);
     }
   }
+  & li:has(.title) {
+    & .img {
+      height: 400px;
+    }
+  }
 }
 
 .img {

@@ -9,10 +9,15 @@ export default function MovieList({ movies }) {
         <li key={id}>
           <Link to={`/movies/${id}`} state={location}>
             <img
-              src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w400/${poster_path}`
+                  : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+              }
               alt={title}
               className={css.img}
             />
+            {!poster_path ? <h2 className={css.title}>{title}</h2> : ''}
           </Link>
         </li>
       ))}

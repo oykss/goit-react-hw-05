@@ -56,7 +56,11 @@ export default function MovieDetailsPage() {
           Go back
         </Link>
         <img
-          src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w400/${poster_path}`
+              : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+          }
           alt={original_title}
           className={css.img}
         />

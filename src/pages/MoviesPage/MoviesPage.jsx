@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Error from '../../components/Error/Error';
 import MovieList from '../../components/MovieList/MovieList';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { getMoviesQuery } from '../../lib/api_handler';
@@ -25,7 +26,7 @@ export default function MoviesPage() {
   return (
     <section>
       <SearchBar />
-      <MovieList movies={movies} />
+      {movies.length !== 0 ? <MovieList movies={movies} /> : <Error />}
     </section>
   );
 }
