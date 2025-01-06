@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaCalendarCheck, FaStar } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import {
@@ -25,7 +25,7 @@ export default function MovieDetailsPage() {
   const [movie, setMovies] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state ?? '/movies';
+  const backLink = useRef(location.state ?? '/movies');
 
   useEffect(() => {
     async function getMovie(id) {
@@ -51,7 +51,7 @@ export default function MovieDetailsPage() {
   return (
     <section className={css.section}>
       <div>
-        <Link to={backLink} className={css.back}>
+        <Link to={backLink.current} className={css.back}>
           <IoIosArrowBack className={css.icon} />
           Go back
         </Link>

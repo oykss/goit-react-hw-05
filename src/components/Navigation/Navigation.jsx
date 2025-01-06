@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import Container from '../Container/Container';
-import css from './Layout.module.css';
+import css from './Navigation.module.css';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -12,7 +12,7 @@ const links = {
   Movies: '/movies',
 };
 
-export default function Layout() {
+export default function Navigation() {
   return (
     <div className={css.nav}>
       <Container>
