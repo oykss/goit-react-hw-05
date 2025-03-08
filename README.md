@@ -1,8 +1,23 @@
-# React + Vite
+# Кінопошук
+Напиши застосунок із маршрутизацією для пошуку фільмів за назвою. В цьому завданні, за допомогою HTTP-запитів, ти будеш отримувати фільми з сервісу **TMDB**. Зареєструй аккаунт (можна ввести довільні дані), щоб отримати доступ до документації та ключ доступу для HTTP-запитів.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Навігація в додатку
+У застосунку обов'язково повинні бути наступні маршрути.
 
-Currently, two official plugins are available:
+- `'/'` – компонент `HomePage`, домашня сторінка із списком популярних кінофільмів.
+- `'/movies'` – компонент `MoviesPage`, сторінка пошуку кінофільмів за ключовим словом.
+- `'/movies/:movieId'` – компонент `MovieDetailsPage`, сторінка із детальною інформацією про кінофільм.
+- `/movies/:movieId/cast` – компонент `MovieCast`, інформація про акторський склад. Рендериться в нижній частині на сторінці `MovieDetailsPage`.
+- `/movies/:movieId/reviews` – компонент `MovieReviews`, інформація про огляди. Рендериться в нижній частині на сторінці `MovieDetailsPage`.
+- 
+Якщо користувач зайшов за неіснуючим маршрутом, потрібно показувати компонент `NotFoundPage`, в якому є посилання **Link** на домашню сторінку.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Файли, папки та компоненти:
+
+Файли компонентів сторінок, таких як `HomePage`, `MoviesPage`, `MovieDetailsPage`, `NotFoundPage`, повинні бути в папці `src/pages`.
+Компоненти `MovieCast` і `MovieReviews` не є окремими сторінками, вони є лише частинами сторінки `MovieDetailsPage`, тому файли цих компонентів зберігаємо в `src/components`.
+Меню з навігаційними посиланнями перенесіть в компонент `Navigation`. Він складається з двох компонентів `NavLink`, які вказують на маршрути `/` і `/movies`.
+Для відображення списку фільмів створіть компонент `MovieList`. Використовуйте його на сторінках `HomePage` і `MoviesPage`.
+
+При натисканні на посилання `Go back` (після перегляду акторів/ рев'ю) користувач має повернутися на сторінку, з якої він зайшов на сторінку з деталями фільма. Якщо сторінку було оновлено і об'єкт місцезнаходження не зберігся, то повертай користувача на `"/movies"`.
+Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи `React.lazy` та `Suspense`.
